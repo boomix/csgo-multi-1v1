@@ -6,6 +6,7 @@
 #include <sdktools>
 #include <smlib>
 #include <sourcemod>
+#include <geoip>
 
 #include "include/logdebug.inc"
 #include "include/multi1v1.inc"
