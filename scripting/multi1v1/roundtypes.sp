@@ -144,14 +144,5 @@ public void PistolHandler(int client) {
 public void AwpHandler(int client) {
   GiveWeapon(client, "weapon_awp");
   Client_SetHelmet(client, true);
-
-  int pistolBehavior = g_PistolBehaviorCvar.IntValue;
-  if (pistolBehavior == 0) {
-    GiveWeapon(client, g_SecondaryWeapon[client]);
-  } else if (pistolBehavior == 2 || pistolBehavior == 3) {
-    char defaultPistol[WEAPON_NAME_LENGTH];
-    g_DefaultPistolCvar.GetString(defaultPistol, sizeof(defaultPistol));
-    GiveWeapon(client, defaultPistol);
-  }
   Multi1v1_GivePlayerKnife(client);
 }
