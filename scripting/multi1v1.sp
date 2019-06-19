@@ -312,6 +312,7 @@ public void OnPluginStart() {
   AddRadioCommandListeners();
   RegConsoleCmd("multi1v1_spawninfo", Command_SpawnInfo, "Displays map spawn info");
   RegConsoleCmd("sm_guns", Command_Guns, "Displays gun/round selection menu");
+  RegConsoleCmd("sm_menu", Command_Guns, "Displays gun/round selection menu");
   RegConsoleCmd("sm_hidestats", Command_Hidestats, "Hides player stats/ratings");
   RegConsoleCmd("sm_autospec", Command_Autospec, "Enables/disables autospec");
   RegAdminCmd("sm_reloadroundtypes", Command_ReloadRoundTypes, ADMFLAG_CHANGEMAP,
@@ -1045,7 +1046,7 @@ public Action OnClientSayCommand(int client, const char[] command, const char[] 
   }
 
   // To avoid cluttering up chat, these commands are hidden
-  char gunsChatCommands[][] = {"gun", "guns", ".gun", ".guns", "!gun", "!guns", "gnus"};
+  char gunsChatCommands[][] = {"gun", "guns", ".gun", ".guns", "!gun", "!guns", "gnus", "menu", ".menu"};
   bool block = (g_HideGunsChatCommandsCvar.IntValue != 0);
   Action ret = block ? Plugin_Handled : Plugin_Continue;
 
