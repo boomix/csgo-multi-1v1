@@ -780,8 +780,26 @@ public void SetupPlayer(int client, int arena, int other, bool onCT) {
   CS_SetClientContributionScore(client, score);
 
   // Set clan tags to the arena number
-  char buffer[32];
-  Format(buffer, sizeof(buffer), "%T", "ArenaClanTag", LANG_SERVER, arena - g_arenaOffsetValue);
+
+  char IPadress[70], country[3];
+  GetClientIP(client, IPadress, sizeof(IPadress));
+  GeoipCode2(IPadress, country);
+
+  // t flag for twitch
+  char fullcountry[50];
+  if(Client_HasAdminFlags(client, ADMFLAG_CUSTOM5))
+    Format(fullcountry, sizeof(fullcountry), "%s-YOUTUBE", country);
+    
+  else if(Client_HasAdminFlags(client, ADMFLAG_CUSTOM6))
+    Format(fullcountry, sizeof(fullcountry), "%s-VIP", country);
+    
+  else
+  	Format(fullcountry, sizeof(fullcountry), "%s", country);
+
+	
+  char buffer[162];
+  Format(buffer, sizeof(buffer), "%T | [%s]", "ArenaClanTag", LANG_SERVER, arena - g_arenaOffsetValue, fullcountry);
+
 
   if (g_UseTeamTagsCvar.IntValue != 0)
     CS_SetClientClanTag(client, buffer);
