@@ -792,7 +792,7 @@ public void SetupPlayer(int client, int arena, int other, bool onCT) {
     Format(fullcountry, sizeof(fullcountry), "%s-YOUTUBE", country);
     
   else if(Client_HasAdminFlags(client, ADMFLAG_CUSTOM6))
-    Format(fullcountry, sizeof(fullcountry), "%s-VIP", country);
+    Format(fullcountry, sizeof(fullcountry), "--VIP--", country);
     
   else
   	Format(fullcountry, sizeof(fullcountry), "%s", country);
